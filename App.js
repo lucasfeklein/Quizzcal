@@ -40,25 +40,39 @@ export default function App (){
     }, [playAgain])
     
     function selectAnswer(questionId, id){
-        setQuizData (result => {
-           return result.map( question => {
-               if (questionId === question.id){
-                   return {
-                       ...question, 
-                       choicesProperties: question.choicesProperties.map(choice => {
-                           if (id === choice.id) {
-                               return {...choice, isSelected: true}
-                           } else {
-                               return {...choice, isSelected: false}
-                           }
-                       })
-                       }
-               } else {
-                   return question
-               }
-           })
-        })
+        if (!checkResults){
+            setQuizData (result => {
+            return result.map( question => {
+                if (questionId === question.id){
+                    return {
+                        ...question, 
+                        choicesProperties: question.choicesProperties.map(choice => {
+                            if (id === choice.id) {
+                                return {...choice, isSelected: true}
+                            } else {
+                                return {...choice, isSelected: false}
+                            }
+                        })
+                        }
+                } else {
+                    return question
+                }
+            })
+            })
+        }
     }
+
+    // // Another option for the selectAnswer function
+
+        // const quizDataCopy = [...quizData]
+        // const question = quizDataCopy.find(el => el.id === questionId)
+        
+        // const changeStatusIsSelectArray = question.choicesProperties.map(choice => {
+        //     if (choice.id === id){
+        //         return {...choice, isSelected: true}
+        //     }
+        //     return {...choice, isSelected: false}
+        // }) 
     
     function startQuiz(){
         setStart(prevStart => !prevStart)
