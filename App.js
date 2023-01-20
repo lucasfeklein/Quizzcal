@@ -65,7 +65,7 @@ export default function App (){
     // // Another option for the selectAnswer function
 
         // const quizDataCopy = [...quizData]
-        // const question = quizDataCopy.find(el => el.id === questionId)
+        // const question = quizDataCopy.find(question => question.id === questionId)
         
         // const changeStatusIsSelectArray = question.choicesProperties.map(choice => {
         //     if (choice.id === id){
